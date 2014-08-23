@@ -1,13 +1,15 @@
-This is a system status bar indicator (system tray icon) which indicates the strength of your internet connection, for when the weakest hop in the connection isn't the Wifi or Bluetooth link to your computer.
+* Is my devserver broken, or does AT&T just suck?
+This is a system status bar indicator (AKA system tray icon) which indicates the strength of your internet connection, for when the weakest hop in the connection isn't the Wifi or Bluetooth link to your computer, such as when you're using a mobile hot-spot.
 
-I wrote this script because I often work on a shuttle bus, connected to the internet via mobile tether or the shuttle's Wifi. A large portion of my day-to-day work is done over an ssh session, so whenever the mobile connection drops or is slow, I'm forced pass the time by doing some other work that dosn't require a persistent high-quality connection (email, Facebook, etc). Once the connection is back, I usually want to flip back into the work I was doing on ssh.
+I wrote this script because I often work on a shuttle bus, connected to the internet via mobile tether or the shuttle's Wifi. A large portion of my day-to-day work is done over an ssh session, so whenever the mobile connection drops or is slow, I'm forced pass the time by doing some other work that doesn't require a persistent high-quality connection (email, Facebook, etc). Once the connection is back, I usually want to flip back into the work I was doing on ssh.
 
-The problem with this work-flow has been that there is no cue to tell me when the connection is back with enough quality for me to return to the ssh work. Since the bad connection is between a cell tower and my phone/the shuttle's bridge rather than my laptop directly, there's no nice system status bar (system tray) icon like there is for Wifi or Bluetooth signal strength. Since it won't have access to the actual signal strength info, this script cannot be as accurate as those indicators, so it instead summarizes basic ping statistics (round trip and loss ratio to google.com) which should be primarily affected by the worst hop in the connection (the mobile link).
+The problem with this work-flow has been that there is no cue to tell me when the connection is back with enough quality for me to return to the ssh work. Since the weakest link is between a cell tower and my phone/the shuttle's bridge rather than my laptop directly, there's no nice system status bar icon like there is for Wifi or Bluetooth signal strength. Since it won't have access to the actual signal strength info, this script cannot be as accurate as those indicators, so it instead summarizes basic ping statistics (p95 round trip time and loss ratio to google.com) which should be primarily affected by the worst hop in the connection (the mobile link).
 
 * Work in Progress
 This is a work in progress. The things which need to be fixed/changed/added are:
 
 - Tune the parameters for setting the various icon colours
 - Re-package as a proper OSX app
-- Remove the dock icon when running
+- Remove the python-default dock icon when running
 - Add configuration option to start on log-in
+- Could use a better icon than just a coloured box
